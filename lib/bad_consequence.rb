@@ -7,15 +7,45 @@ class BadConsequence
   attr_reader :levels
   attr_reader :nVisibleTreasures
   attr_reader :nHiddenTreasures
+  attr_reader :specificVisibleTreasures
+  attr_reader :specificHiddenTreasures
   attr_reader :death
-  def initialize
-    @text = "hola"
-    @levels = 9
-    @nHiddenTreasures = 0
-    @nVisibleTreasures = 0
-    @death = true
+#  def initialize
+#    @text = "hola"
+#    @levels = 9
+#    @nHiddenTreasures = 0
+#    @nVisibleTreasures = 0
+#    @death = true
+#  end
+  
+  private_class_method :new
+  def initialize(aText, someLevels, someVisibleTreasures, someHiddenTreasures, 
+        someSpecificVisibleTreasures, someSpecificHiddenTreasures, death)
+    @text = aText
+    @levels = someLevels
+    @nVisibleTreasures = someVisibleTreasures
+    @nHiddenTreasures = someHiddenTreasures
+    @specificVisibleTreasures = someSpecificVisibleTreasures
+    @specificHiddenTreasures = someSpecificHiddenTreasures
+    @death = death
+  end
+
+  def self.newLevelNumberOfTreasures(aText, someLevels, someVisibleTreasures,
+      someHiddenTreasures)
+    new(aText, someLevels, someVisibleTreasures, someHiddenTreasures, nil,
+      nil, nil)
   end
   
+  def self.newLevelSpecificTreasures (aText, someLevels, someSpecificVisibleTreasures,
+      someSpecificHiddenTreasures)
+    new(aText, someLevels, nil, nil, someSpecificVisibleTreasures, 
+      someSpecificHiddenTreasures, nil)
+  end
+  
+  def self.newDeath(aText)
+    new(aText, nil, nil, nil, nil, nil, true)
+  end
+
   def to_s
     puts "Aqui to_S"
     cadena = "Descripcion: #{@text} \n Niveles: #{@levels} \n Numero de tesoros"
