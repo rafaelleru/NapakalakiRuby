@@ -83,7 +83,34 @@ class PruebaNapakalaki
     bc13 = BadConsequence.newDeath('No le hace gracia que pronuncien mal su nombre. Estas muerto')
     monsters << Monster.new('Yskhtihyssg-Goth', 14, bc13, p13)
     
+    # Familia Feliz
+    p14 = Prize.new(3, 1)
+    bc14 = BadConsequence.newDeath('La familia te atrapa. Estas muerto')
+    monsters << Monster.new('Familia feliz', 1, bc14, p14)
     
+    # Roboggoth
+    p15 = Prize.new(2, 1)
+    bc15 = BadConsequence.newLevelSpecificTreasures('La quinta directiva primitiva te
+     obliga a perder 2 niveles y un tesorode 2 manos visible',2,TreasureKind.BOTHHANDS,0)
+    monsters << Monster.new('Robbogoth', 8, bc15, p15)
+    
+    # El Espía sordo
+    p16 = Prize.new(1, 1)
+    bc16 = BadConsequence.newLevelSpecificTreasures('Te asusta en la noche.Pierdes un 
+      casco visible',0,TreasureKind.HELMET,0)
+    monsters << Monster.new('El espía sordo', 5, bc16, p16)
+    
+    #Tongue
+    p17 = Prize.new(2, 1)
+    bc17 = BadConsequence.newLevelNumberOfTreasures('Menudo susto te llevas. Pierdes 2 niveles
+      y 5 tesoros visibles.', 2, 5, 0)
+    monsters << Monster.new('Tongue', 19, bc17, p17)
+    
+    #Bicéfalo
+    p18 = Prize.new(2, 1)
+    bc18 = BadConsequence.newLevelNumberOfTreasures('Te faltan manos para tanta cabeza. 
+      Pierdes 3 niveles y tus tesoros visibles de las manos.', 3, 10, 0)
+    monsters << Monster.new('Bicefálo', 21, bc18, p18)
     
   end
   
