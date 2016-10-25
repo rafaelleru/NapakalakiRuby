@@ -7,7 +7,7 @@ module Napakalaki
   
   ARMOR = :armor
   ONEHAND = :onehand
-  BOTHHANDS :bothhands
+  BOTHHANDS = :bothhands
   HELMET = :helmet
   SHOES = :shoes
   
