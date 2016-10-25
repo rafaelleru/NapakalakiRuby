@@ -43,14 +43,12 @@ class BadConsequence
   end
   
   def self.newDeath(aText)
-    new(aText, nil, nil, nil, nil, nil, true)
+    new(aText, 0, nil, nil, [], [], true)
   end
 
   def to_s
     puts "Aqui to_S"
-    cadena = "Descripcion: #{@text} \n Niveles: #{@levels} \n Numero de tesoros"
-    + " visibles que descarta: #{@nVisibleTreasures} \n Numero te tesoros ocultos"
-    + " que descarta: #{@nHiddenTreasures} \n Muerte: "
+    cadena = "Descripcion: #{@text} \n Niveles: #{@levels} \n Numero de tesoros visibles que descarta: #{@nVisibleTreasures} \n Numero te tesoros ocultos que descarta: #{@nHiddenTreasures} \n Muerte: "
     
     if @death
       cadena += "Si"
