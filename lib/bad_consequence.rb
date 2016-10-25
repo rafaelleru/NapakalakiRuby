@@ -32,8 +32,8 @@ class BadConsequence
 
   def self.newLevelNumberOfTreasures(aText, someLevels, someVisibleTreasures,
       someHiddenTreasures)
-    new(aText, someLevels, someVisibleTreasures, someHiddenTreasures, nil,
-      nil, nil)
+    new(aText, someLevels, someVisibleTreasures, someHiddenTreasures, [],
+      [], nil)
   end
   
   def self.newLevelSpecificTreasures (aText, someLevels, someSpecificVisibleTreasures,
