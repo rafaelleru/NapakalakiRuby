@@ -58,4 +58,19 @@ class BadConsequence
     
     return cadena
   end
+  
+  def isEmpty
+    if @nVisibleTreasures == nil and @nHiddenTreasures == nil and 
+        @specificVisibleTreasures == nil and @specificHiddenTreasures == nil
+      return true
+    else
+      return false
+    end
+  end
+  
+  #def substractVisibleTreasure(someSpecificVisibleTreasure)end
+  #def substractHiddenTreasure(someSpecificHiddenTreasure)end
+  #def adjustToFitTreausreLists(v, h)end
+
+
 end
