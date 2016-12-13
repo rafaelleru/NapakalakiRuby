@@ -57,6 +57,16 @@ class Napakalaki
   end
   
   def developCombat()
+    combat = @currentPlayer.combat(@currentMonster)
+    myLevel = @currentPlayer.getCombatLevels()
+    monsterLevel = @currentMonster.combatLevel
+    
+    if !CanISteal then
+      dice.getInstance()
+    end
+    
+    
+      
     
   end
   
@@ -72,8 +82,10 @@ class Napakalaki
     
   end
   
-  def initGame()
-    
+  def initGame(names)
+    initPlayers(names)
+    dealer.initCards
+    nextTurn
   end
   
   def getCurrentPlayer()
