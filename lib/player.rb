@@ -38,7 +38,29 @@ class Player
     end
   end 
   
+  def applyBadConsequence(monster)
+    bc = monster.bc
+    nLevels = bc.levels
+    self.decrementLevels(nLevels)
+    
+    pendingBadConsequence = bc.adjustToFitTreasureList(self.nVisibleTreasures, self.nHiddenTreasures)
+  end
+  
   def applyPrize(monster)
+    nLevels = monster.combatLevel
+    self.incrementLevels(nLevels)
+    
+    nTreasures = monster.nTreasures
+    if(nTreasures > 4)
+      dealer = CardDealer.get_instance
+      
+      n = dealer.nextNumber
+      i = 0
+      while(i < n)
+        t = dealer.nextTreasure
+        @hiddenTreasures << t
+      end
+    end
     
   end
   
@@ -160,6 +182,13 @@ class Player
   end
   
   def discardAllTreasures()
+    @visibleTreasures.each do|t|
+      self.discardVisibleTreasure(t)
+    end
+    
+    @hiddenTreasures.each do |t|
+      self.discardHiddenTreasures(t)
+    end
     
   end
   
