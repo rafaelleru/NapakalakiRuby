@@ -44,6 +44,31 @@ class Player
   
   def canMakeTreasureVisible(treasure)
     
+    result = false
+    
+    case treasure.type
+    when ONEHAND
+      if is_treasure_kind_in_use(BOTHHANDS) then
+        result =false
+      else
+        i=0
+        @visibleTreasures.each do |tv|
+          if tv.type == ONEHAND then
+            i += 1
+          end
+        end
+        
+        if i == 2 then
+          result = false
+        else
+          result = true
+        end
+      end
+    else
+      result = !is_treasure_kind_in_use(treasure.type)
+    end
+    
+    return result
   end
   
   def howManyVisibleTreasures(tkind)
@@ -114,6 +139,8 @@ class Player
   end
   
   def giveMeATreasure()
+    i = rand(@hiddenTreasures.length)
+    return @hiddenTreasures.get(i)
     
   end
   
