@@ -68,8 +68,12 @@ class BadConsequence
     end
   end
   
-  #def substractVisibleTreasure(someSpecificVisibleTreasure)end
-  #def substractHiddenTreasure(someSpecificHiddenTreasure)end
+  def substractVisibleTreasure(someSpecificVisibleTreasure)
+    @specificVisibleTrasure.delete(someSpecificVisibleTreasure)
+  end
+  def substractHiddenTreasure(someSpecificHiddenTreasure)
+    @specificHiddenTreasure.delete(someSpecificHiddenTreasure)
+  end
   #def adjustToFitTreausreLists(v, h)end
 
 
