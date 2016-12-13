@@ -39,7 +39,11 @@ class Player
   end 
   
   def applyPrize(monster)
+    bc = monster.bc
+    nLevels = bc.levels
+    self.decrementLevels(nLevels)
     
+    pendingBadConsequence = bc.adjustToFitTreasureList(self.nVisibleTreasures, self.nHiddenTreasures)
   end
   
   def canMakeTreasureVisible(treasure)
