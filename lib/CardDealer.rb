@@ -166,8 +166,41 @@ module Napakalaki
       @unusedMonsters = @unusedMonsters.shuffle
     end
     
-    #def nextTreasure end
-    #def nextMonster end
+    def nextTreasure
+      
+      if @unusedTreasures.empty?
+        @usedTreasures.each do |t|
+          @unusedTreasures << t
+        end
+        shuffleTreasures
+        @usedTreasures.clear
+      end
+      
+      t = @unusedTreasures.at(0)
+      @usedTreasures << t
+      @unusedTreasures.delete(t)
+      
+      return t
+      
+    end
+    
+    def nextMonster
+      
+      if @unusedMonsters.empty?
+        @usedMonsters.each do |m|
+          @unusedMonsters << m
+        end
+        shuffleMonsters
+        @usedMonsters.clear
+      end
+      
+      m = @unusedMonsters.at(0)
+      @usedMonsters << m
+      @unusedMonsters.delete(m)
+      
+      return m
+      
+    end
     
     def giveTreasureBack(t)
       @usedTreasures.add(t)
