@@ -149,6 +149,24 @@ class Player
   end
   
   def initTreasures()
+    dealer = CardDealer.get_instance
+    dice = Dice.get_instance
+    
+    self.bringToLife()
+    t = dealer.nextTreasure
+    @hiddenTreasures << t
+    
+    n = dice.nextNumber
+    
+    if(n > 1)
+      t = dealer.nextTreasure
+      @hiddenTreasures << t
+    end
+    
+    if(n == 6)
+      t = dealer.nextTreasure
+      @hiddenTreasures << t
+    end
     
   end
   
