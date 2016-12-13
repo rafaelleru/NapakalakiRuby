@@ -58,16 +58,6 @@ class Napakalaki
   
   def developCombat()
     combat = @currentPlayer.combat(@currentMonster)
-    myLevel = @currentPlayer.getCombatLevels()
-    monsterLevel = @currentMonster.combatLevel
-    
-    if !CanISteal then
-      dice.getInstance()
-    end
-    
-    
-      
-    
   end
   
   def discardVisibleTreasures(treasures)
