@@ -127,6 +127,28 @@ class Player
   
   def combat(monster)
     
+    monsterLevel = monster.combatLevel
+    if(@canISteal == false)
+      dice  =Dice.get_instance
+      
+      n = dice.nextNumber()
+      if(n < 3)
+        monsterLevel += @enemy.level
+      end
+      
+      if(monsterLevel < myLevel)
+        self.applyPrize(monster)
+        if(@level == 10)
+          return CombatResul.WINGAME
+        else
+          return CombatResult.WIN
+        end
+      else
+        self.applyBadConsequence(monster)
+        return CombatResult.LOSE        
+     end
+    
+    end
   end
   
   def makeTreasureVisble(treasure)
