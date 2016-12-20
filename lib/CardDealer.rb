@@ -203,14 +203,17 @@ module Napakalaki
     end
     
     def giveTreasureBack(t)
-      @usedTreasures.add(t)
+      @usedTreasures << t
     end
     
     def giveMonsterBack(m)
-      @usedMonsters.add(m)
+      @usedMonsters.add<< m
     end
     
-    #def initCards end
+    def initCards 
+      initTreasureCardDeck
+      initMonsterCardDeck
+    end
     
   end
 end
