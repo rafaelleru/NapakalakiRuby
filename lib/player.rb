@@ -152,15 +152,27 @@ class Player
   end
   
   def makeTreasureVisble(treasure)
-    
+    canI = canMakeTreasureVisible(t)
+    if(canI==true)
+      @visibleTreasures<<(t)
+      @hiddenTreasures.delete(t)
+    end
   end
   
   def discarVisibleTreasure(treasure)
-    
+    @visibleTreasures.delete(t)
+    if(!(@pendingBadConsequence.isEmpty))
+      @pendingBadConsequence.substractVisibleTreasure(t)
+    end
+    dieIfNoTreasures
   end
   
   def discarHiddenTreasure(treasure)
-   
+    @hiddenTreasures.delete(t)
+    if(!(@pendingBadConsequence.isEmpty))
+      @pendingBadConsequence.substractHiddenTreasure(t)
+    end
+    dieIfNoTreasures 
   end
   
   def validState()
@@ -193,7 +205,17 @@ class Player
   end
   
   def stealTreasure()
-    
+    canI=@canISteal
+    treasure=nil
+    if(canI==true)
+      canYou=@enemy.canYouGiveMeATreasure
+      if(canYou==true)
+        treasure=@enemy.giveMeATreasure
+        @hiddenTreasures<<(treasure)
+        haveStolen
+      end
+    end
+    return treasure
   end
   
   def setEnemy(player)
