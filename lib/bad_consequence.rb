@@ -74,7 +74,47 @@ class BadConsequence
   def substractHiddenTreasure(someSpecificHiddenTreasure)
     @specificHiddenTreasure.delete(someSpecificHiddenTreasure)
   end
-  #def adjustToFitTreausreLists(v, h)end
+  
+  def adjustToFitTreausreLists(v, h)
+      tvisible=v.size
+      thidden=h.size
+      sv=Array.new
+      sh=Array.new
+      
+      if (@someVisibleTreasures>0 || @someHiddenTreasures>0)
+        if (@someVisibleTreasures<=tvisible)
+          @someVisibleTreasures=tvisible-@someVisibleTreasures
+        end
+        if (@someHiddenTreasures<=thidden)
+          @someHiddenTreasures=thidden-@someHiddenTreasures
+        end
+        ntes = BadConsequence.new("",0,@someVisibleTreasures,@someHiddenTreasures)
+        return ntes
+      else
+        if (@someSpecificVisibleTreasures != nil)
+          if (!(@someSpecificVisibleTreasures.empty?))
+            for i in v.size do
+              if (@someSpecificVisibleTreasures.include?(v.get(i)))
+                sv<<(v.get(i).type)
+                v.delete(v.get(i))
+              end
+            end
+          end
+        end
+        if (@someSpecificHiddenTreasures != nil)
+          if (!(@someSpecificHiddenTreasures.empty?))
+            for j in h.size do
+              if (@someSpecificHiddenTreasures.include?(h.get(j)))
+                sh<<(h.get(j).type)
+                h.delete(h.get(j))
+              end
+            end
+          end
+        end
+          stes = BadConsequence.new("",0,sv,sh)
+      end
+      return stes
+  end
 
 
 end
