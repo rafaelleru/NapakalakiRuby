@@ -58,24 +58,34 @@ class Napakalaki
   
   def developCombat()
     combat = @currentPlayer.combat(@currentMonster)
+    dealer.giveMonsterBack(@currentMonster)
+    return combat
   end
-  
+
   def discardVisibleTreasures(treasures)
-    
+    for i in treasures.size do
+      @currentPlayer.discardVisibleTreasure(treasures.get(i))
+      @dealer.giveTreasureBack(treasures.get(i))
+    end
   end
   
   def discardHiddenTreasures(treasures)
-    
+    for i in treasures.size do
+      @currentPlayer.discardHiddenTreasure(treasures.get(i))
+      @dealer.giveTreasureBack(treasures.get(i))
+    end
   end
   
-  def makeTreasureVisible()
-    
+  def makeTreasuresVisible(treasures)
+    for i in treasures.size do
+      @currentPlayer.makeTreasureVisible(treasures.get(i))
+    end
   end
   
   def initGame(names)
     initPlayers(names)
     dealer.initCards
-    nextTurn
+    nextTurn()
   end
   
   def getCurrentPlayer()
@@ -87,7 +97,20 @@ class Napakalaki
   end
   
   def nextTurn()
+    stateOk = self.nextTurnIsAllowed()
     
+    if stateOk
+      @currentMonster = dealer.nextMonster()
+      @currentPlayer = self.nextPlayer()
+      
+      dead = @currentPlayer.dead
+      
+      if dead
+        @currentPlayer.initTreasures()
+      end
+    end
+    
+    return stateOk
   end
   
   def endOfGame(result)
