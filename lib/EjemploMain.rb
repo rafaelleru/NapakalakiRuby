@@ -1,8 +1,8 @@
 # To change this license header, choose License Headers in Project Properties.
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
-require_relative "GameTester.rb"
-require_relative "Napakalaki.rb"
+require_relative "GameTester"
+require_relative "napakalaki.rb"
 
 module NapakalakiGame
 
@@ -12,7 +12,7 @@ module NapakalakiGame
         
        test = Test::GameTester.instance
      
-        game = Napakalaki::Napakalaki.instance
+       game = Napakalaki::Napakalaki.instance
    
        #Se prueba el juego con 2 jugadores
    

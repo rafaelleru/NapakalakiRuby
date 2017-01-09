@@ -9,6 +9,8 @@
 require 'singleton'
 require_relative 'napakalaki'
 require_relative 'Command'
+require_relative "combat_result.rb"
+
 
 module Test
 
@@ -41,16 +43,16 @@ class GameTester
         if (command == Command::Combat) then
           combatResult = @game.developCombat()
           case combatResult
-            when NapakalakiGame::CombatResult::WINGAME then 
+            when Napakalaki::WINGAME then 
               puts "\n\n       " + currentPlayer.getName()
               puts "\n\n HAS GANADO LA PARTIDA"
               #break está implícito            
-            when NapakalakiGame::CombatResult::WIN then
+            when Napakalaki::WIN then
               puts "\n\n Ganaste el combate"
-            when NapakalakiGame::CombatResult::LOSE then
+            when Napakalaki::LOSE then
               puts "\n\n Has perdido el combate, te toca cumplir el mal rollo"
            end #case
-           if (combatResult != NapakalakiGame::CombatResult::WINGAME) then
+           if (combatResult != Napakalaki::WINGAME) then
             begin #Hasta que se avance de turno 
               puts "******* ******* ******* ******* ******* ******* *******"
               puts "\n\n Turno de: " + currentPlayer.to_s()

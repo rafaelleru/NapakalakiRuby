@@ -1,29 +1,32 @@
 # To change this license header, choose License Headers in Project Properties.
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
+require_relative "card_dealer.rb"
+require_relative "player.rb"
+
 require "singleton"
+
 module Napakalaki
   class Napakalaki
     include Singleton
     
-    attr_accesor :currentPlayer
-    attr_accesor :players
-    attr_accesor :dealer
-    attr_accesor :current_monster
+    attr_accessor :currentPlayer
+    attr_accessor :players
+    attr_accessor :dealer
+    attr_accessor :current_monster
     
     def initPlayers(names)
       @dealer = CardDealer.instance
-      @player = Array.new
-      
+      @players = Array.new      
       names.each do |s|
-        players << Player.new(s)
+        @currentPlayer = Player.new(s)
+        @players << @currentPlayer
       end
     end
     
     def nextPlayer()
       
       total_players = @players.length
-      
       if(@currentPlayer == nil) then
         next_index = rand(total_players)
       else

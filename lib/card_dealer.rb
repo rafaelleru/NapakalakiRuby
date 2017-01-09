@@ -1,13 +1,18 @@
+# coding: utf-8
 # To change this license header, choose License Headers in Project Properties.
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
+require_relative "treasure.rb"
+require_relative "monster.rb"
+require_relative "treasure_kind.rb"
+require_relative "bad_consequence.rb"
 
 module Napakalaki
   require "singleton"
 
   class CardDealer
   
-    include singleton
+    include Singleton
   
     attr_reader :useMonsters
     attr_reader :unusedMonsters
@@ -18,7 +23,7 @@ module Napakalaki
       
     
       @unusedTreasures = Array.new
-      @usedTreasures = Array.new 
+      @usedTreasures = Array.new
     
       #Creamos los tesoros
       
@@ -28,7 +33,7 @@ module Napakalaki
       @unusedTreasures << Treasure.new("A prueba de babas", 2, ARMOR)
       @unusedTreasures << Treasure.new("Botas de lluvia ácida", 1, BOTHHANDS)
       @unusedTreasures << Treasure.new("Casco minero", 2, HELMET)
-      @unusedTreasures << Treasure.new("Ametralladora ACME", 600, 4, 8, BOTHHANDS)
+      @unusedTreasures << Treasure.new("Ametralladora ACME", 8, BOTHHANDS)
       @unusedTreasures << Treasure.new("Camiseta de la ETSIIT", 1, ARMOR)
       @unusedTreasures << Treasure.new("Clavo de rail ferroviario", 3, ONEHAND)
       @unusedTreasures << Treasure.new("Cuchillo de sushi arcano", 2, ONEHAND)
@@ -63,22 +68,22 @@ module Napakalaki
     
       # 3 byakhees de bonanza
       price1 = Prize.new(2, 1)
-      badConsequence1 = BadConsequence.newLevelSpecificTreasures('Pierdes tu armadura visible y otra oculta', 0, [Napakalaki::ARMOR], [Napakalaki::ARMOR])
+      badConsequence1 = BadConsequence.newLevelSpecificTreasures('Pierdes tu armadura visible y otra oculta', 0, [ARMOR], [ARMOR])
       @unusedMonsters << Monster.new('3 byakhees de bonanza', 8, badConsequence1, price1)
     
       # Tenochtitlan
       price2 = Prize.new(1, 1)
-      badConsequence2 = BadConsequence.newLevelSpecificTreasures('Embobados con el primigenio te descartas de tu casco visible.', 0, [] , [Napakalaki::ARMOR])
+      badConsequence2 = BadConsequence.newLevelSpecificTreasures('Embobados con el primigenio te descartas de tu casco visible.', 0, [] , [ARMOR])
       @unusedMonsters << Monster.new('Tenochtitlan', 2, badConsequence2, price2)
     
       # El sopor de Dunwich
       price3 = Prize.new(1, 1)
-      badConsequence3 = BadConsequence.newLevelSpecificTreasures('El primordial bostezo contagioso, pierdes el calzado visible', 0, [Napakalaki::SHOES], [])
+      badConsequence3 = BadConsequence.newLevelSpecificTreasures('El primordial bostezo contagioso, pierdes el calzado visible', 0, [SHOES], [])
       @unusedMonsters << Monster.new('El sopor de Dunwich', 2, badConsequence3, price3)
     
       # Demonios de magaluf
       prize4 = Prize.new(4, 1)
-      bc4 = BadConsequence.newLevelSpecificTreasures("Te atrapan para llevarte de fiesta y te dejan caer en mitad de vuelo. Descarta 1 mano visible y 1 mano oculta.", 0, [Napakalaki::ONEHAND], [Napakalaki::ONEHAND])
+      bc4 = BadConsequence.newLevelSpecificTreasures("Te atrapan para llevarte de fiesta y te dejan caer en mitad de vuelo. Descarta 1 mano visible y 1 mano oculta.", 0, [*ONEHAND], [*ONEHAND])
       @unusedMonsters << Monster.new('Demonios de magaluf', 2, bc4, prize4)
     
       # El gorron en el umbral
@@ -88,12 +93,12 @@ module Napakalaki
     
       # H.P munchcraft
       p6 = Prize.new(2, 1)
-      bc6 = BadConsequence.newLevelSpecificTreasures("Pierdes la armadura visible", 0, [Napakalaki::ARMOR], [])
+      bc6 = BadConsequence.newLevelSpecificTreasures("Pierdes la armadura visible", 0, [ARMOR], [])
       @unusedMonsters << Monster.new('H.P. Munchcraft', 6, bc6, p6)
     
       # Necrofago
       p7 = Prize.new(1, 1)
-      bc7 = BadConsequence.newLevelSpecificTreasures("Sientes bichos bajo la ropa. Descarta la armadura visible", 0, [Napakalaki::ARMOR], [])
+      bc7 = BadConsequence.newLevelSpecificTreasures("Sientes bichos bajo la ropa. Descarta la armadura visible", 0, [ARMOR], [])
       @unusedMonsters << Monster.new('Necrofago', 13, bc7, p7)
     
       # El rey rosado
@@ -113,12 +118,12 @@ module Napakalaki
     
       # semillas cthulhu
       p10 = Prize.new(2, 1)
-      bc10 = BadConsequence.newLevelSpecificTreasures('Te intentas escaquear. Pierdes la mano visible', 0, [Napakalaki::ONEHAND], [])
+      bc10 = BadConsequence.newLevelSpecificTreasures('Te intentas escaquear. Pierdes la mano visible', 0, [ONEHAND], [])
       @unusedMonsters << Monster.new('Semillas Cthulhu', 4, bc10, p10)
     
       # Dameargo
       p11 = Prize.new(2, 1)
-      bc11 = BadConsequence.newLevelSpecificTreasures('Te intentas escaquear. Pierdes una mano visible', 0, [Napakalaki::ONEHAND], [])
+      bc11 = BadConsequence.newLevelSpecificTreasures('Te intentas escaquear. Pierdes una mano visible', 0, [ONEHAND], [])
       @unusedMonsters << Monster.new('Dameargo', 1, bc11, p11)
     
       # Pollipolipo volante
@@ -138,12 +143,12 @@ module Napakalaki
     
       # Roboggoth
       p15 = Prize.new(2, 1)
-      bc15 = BadConsequence.newLevelSpecificTreasures('La quinta directiva primitiva te obliga a perder 2 niveles y un tesorode 2 manos visible#',2,[Napakalaki::BOTHHANDS],[])
+      bc15 = BadConsequence.newLevelSpecificTreasures('La quinta directiva primitiva te obliga a perder 2 niveles y un tesorode 2 manos visible#',2,[BOTHHANDS],[])
       @unusedMonsters << Monster.new('Robbogoth', 8, bc15, p15)
     
       # El Espía sordo
       p16 = Prize.new(1, 1)
-      bc16 = BadConsequence.newLevelSpecificTreasures('Te asusta en la noche.Pierdes un casco visible#',0,[Napakalaki::HELMET],[])
+      bc16 = BadConsequence.newLevelSpecificTreasures('Te asusta en la noche.Pierdes un casco visible#',0,[HELMET],[])
       @unusedMonsters << Monster.new('El espia sordo', 5, bc16, p16)
     
       #Tongue
@@ -207,7 +212,7 @@ module Napakalaki
     end
     
     def giveMonsterBack(m)
-      @usedMonsters.add<< m
+      @usedMonsters << m
     end
     
     def initCards 

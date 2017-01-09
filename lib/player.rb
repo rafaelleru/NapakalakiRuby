@@ -1,6 +1,9 @@
 # To change this license header, choose License Headers in Project Properties.
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
+
+require_relative "monster.rb"
+
 module Napakalaki
 class Player
   
@@ -9,7 +12,7 @@ class Player
   attr_reader :dead
   attr_reader :canISteal
   attr_reader :enemy
-  attr_accesor :pendingBadConsequence
+  attr_accessor :pendingBadConsequence
   attr_reader :hiddenTreasures
   attr_reader :visibleTreasures
   MAXLEVEL = 10
@@ -126,7 +129,6 @@ class Player
   end
   
   def combat(monster)
-    
     monsterLevel = monster.combatLevel
     if(@canISteal == false)
       dice  =Dice.get_instance
@@ -139,13 +141,13 @@ class Player
       if(monsterLevel < myLevel)
         self.applyPrize(monster)
         if(@level == 10)
-          return CombatResul.WINGAME
+          return WINGAME
         else
-          return CombatResult.WIN
+          return WIN
         end
       else
         self.applyBadConsequence(monster)
-        return CombatResult.LOSE        
+        return LOSE        
      end
     
     end
@@ -176,7 +178,7 @@ class Player
   end
   
   def validState()
-    if @pendingBadConsequence.isEmpty() and @hiddenTreasures.length < 4
+    if @pendingBadConsequence != nil and @pendingBadConsequence.isEmpty and @hiddenTreasures.length < 4
       return true
     else return false
     end
