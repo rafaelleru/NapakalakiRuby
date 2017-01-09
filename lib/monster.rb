@@ -1,6 +1,7 @@
 # To change this license header, choose License Headers in Project Properties.
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
+module Napakalaki
 
 require_relative "prize.rb"
 
@@ -21,4 +22,5 @@ class Monster
     "Nombre: #{@name} \n Nivel de combate: #{@combatLevel} \n Mal rollo: #{@bc.to_s} \n Buen rollo: #{@prize.to_s}"
   end
   
+end
 end

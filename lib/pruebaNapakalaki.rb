@@ -1,6 +1,9 @@
 # To change this license header, choose License Headers in Project Properties.
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
+
+module Napakalaki
+
 require_relative 'bad_consequence.rb'
 require_relative 'prize.rb'
 require_relative 'TreasureKind.rb'
@@ -147,4 +150,5 @@ imprimir(self.monstersMoreLevelThan10(), "Monstruos con nivel 10")
 imprimir(self.monstersLoseLevels(), "Monstruos con bc que solo reduce niveles")
 imprimir(self.monsterLoseTreasures(Napakalaki::SHOES), "Monstruos con tesoros de tipo BOTHHANDS")
 #p.saluda()
+end
 end
