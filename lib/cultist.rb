@@ -2,12 +2,16 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-class Cultist
-  attr_reader :name
-  attr_accessor :levels
+module Napakalaki
+
+  class Cultist
+    attr_reader :name
+    attr_accessor :levels
   
-  def initialize(n, l)
-    @name = n
-    @levels = l
+    def initialize(n, l)
+      @name = n
+      @levels = l
+    end
   end
+
 end
