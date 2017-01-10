@@ -256,5 +256,9 @@ class Player
     
   end
   
+  def to_s()
+    retutn @name
+  end
+  
 end
 end
