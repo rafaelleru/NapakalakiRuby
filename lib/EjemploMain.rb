@@ -2,7 +2,7 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 require_relative "GameTester"
-require_relative "napakalaki.rb"
+require_relative "Napakalaki"
 
 module NapakalakiGame
 
@@ -12,7 +12,7 @@ module NapakalakiGame
         
        test = Test::GameTester.instance
      
-       game = Napakalaki::Napakalaki.instance
+        game = Napakalaki::Napakalaki.instance
    
        #Se prueba el juego con 2 jugadores
    
