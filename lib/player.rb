@@ -139,7 +139,7 @@ class Player
   end
   
   def combat(monster)
-    monsterLevel = monster.combatLevel
+    monsterLevel = self.getOponentLevel(monster)
     if(@canISteal == false)
       dice  =Dice.get_instance
       
@@ -157,7 +157,11 @@ class Player
         end
       else
         self.applyBadConsequence(monster)
-        return LOSE        
+        if self.shouldConvert then
+          return LOSEANDCONVERT
+        else
+          return LOSE
+        end      
      end
     
     end
@@ -265,7 +269,7 @@ class Player
     end
     
   end
-  
+   
   def getOponentLevel(monster)
     return monster.combatLevel
   end

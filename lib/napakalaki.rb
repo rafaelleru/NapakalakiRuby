@@ -62,6 +62,10 @@ module Napakalaki
     def developCombat()
       combat = @currentPlayer.combat(@currentMonster)
       dealer.giveMonsterBack(@currentMonster)
+      if combat == LOSEANDCONVERT then
+        @curentPlayer = CultistPlayer.new(@currentPlayer, dealer.nextCultist)
+        
+      end
       return combat
     end
     
