@@ -31,5 +31,9 @@ class Monster
     "Nombre: #{@name} \n Nivel de combate: #{@combatLevel} \n Mal rollo: #{@bc.to_s} \n Buen rollo: #{@prize.to_s}"
   end
   
+  def getCombatLevelAgainstcultistPlayer()
+    return @levelChangeAgainstCultistPlayer + @combatLevel
+  end
+  
 end
 end
