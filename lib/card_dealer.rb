@@ -19,6 +19,7 @@ module Napakalaki
     attr_reader :usedTreasures
     attr_reader :unusedTreasures
     attr_reader :unusedCultists
+    attr_reader :usedCultists
   
     def initTreasureCardDeck
       
@@ -196,9 +197,16 @@ module Napakalaki
     def initCultistsCardDeck
       
       @unusedCultists = Array.new
+      @usedCultists = Array.new
       
+      @unusedCultists << Cultist.new("Sectario", 1)
+      @unusedCultists << Cultist.new("Sectario", 2)
+      @unusedCultists << Cultist.new("Sectario", 1)
+      @unusedCultists << Cultist.new("Sectario", 2)
+      @unusedCultists << Cultist.new("Sectario", 1)
+      @unusedCultists << Cultist.new("Sectario", 1)
       
-      
+    
     end
     
     def shuffleTreasures
@@ -246,6 +254,24 @@ module Napakalaki
       @unusedMonsters.delete(m)
       
       return m
+      
+    end
+    
+    def nextCultist
+      
+      if @unusedCultists.empty?
+        @usedCultists.each do |c|
+          @unusedCultists << c
+        end
+        shuffleCultists
+        @usedCultists.clear
+      end
+      
+      c = @unusedCultists.at(0)
+      @usedCultists << c
+      @unusedCultists.delete(c)
+      
+      return c
       
     end
     
