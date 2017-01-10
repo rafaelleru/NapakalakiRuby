@@ -18,6 +18,7 @@ module Napakalaki
     attr_reader :unusedMonsters
     attr_reader :usedTreasures
     attr_reader :unusedTreasures
+    attr_reader :unusedCultists
   
     def initTreasureCardDeck
       
@@ -65,7 +66,7 @@ module Napakalaki
     
       @unusedMonsters = Array.new
       @usedMonsters = Array.new
-    
+      
       # 3 byakhees de bonanza
       price1 = Prize.new(2, 1)
       badConsequence1 = BadConsequence.newLevelSpecificTreasures('Pierdes tu armadura visible y otra oculta', 0, [ARMOR], [ARMOR])
@@ -160,6 +161,35 @@ module Napakalaki
       p18 = Prize.new(2, 1)
       bc18 = BadConsequence.newLevelNumberOfTreasures('Te faltan manos para tanta cabeza. Pierdes 3 niveles y tus tesoros visibles de las manos.#', 3, 10, 0)
       @unusedMonsters << Monster.new('Bicefalo', 21, bc18, p18)
+      
+      #Monstruos sectarios
+      p19 = Prize.new(3, 1)
+      bc19 = BadConsequence.newLevelSpecificTreasures("Pierdes 1 mano visible.", 0, [ONEHAND], [])
+      @unusedMonsters << Monster.new("El mal indecible impronunciable", 10, bc19, p19, -2)
+      
+      p20 = Prize.new(2, 1)
+      bc20 = BadConsequence.newLevelNumberOfTreasures("Pierdes tus tesoros visibles. Jajaja. ", 0, 10, 0)
+      @unusedMonsters << Monster.new("Testigos oculares", 6, bc20, p20, 2)
+      
+      p21 = Prize.new(2, 5)
+      bc21 = BadConsequence.new("Hoy no es tu día de suerte. Mueres. ", 0, 0, 0, 0, 0, true)
+      @unusedMonsters << Monster.new("El gran cthulhu", 20, bc21, p21, 4) 
+      
+      p22 = Prize.new(2, 1)
+      bc22 = BadConsequence.newLevelNumberOfTreasures("Tu gobierno te recorta 2 niveles", 2, 0, 0)
+      @unusedMonsters << Monster.new("Serpiente politico", 8, bc22, p22, -2)
+      
+      p23 = Prize.new(1, 1)
+      bc23 = BadConsequence.newLevelSpecificTreasures("Pierdes tu casco y armadura visible. Pierdes tus manos ocultas", 0, [ARMOR][HELMET], [ONEHAND][ONEHAND])
+      @unusedMonsters << Monster.new("Felpuggoth", 2, bc23, p23, 5)
+      
+      p24 = Prize.new(4, 2)
+      bc24 = BadConsequence.newLevelNumberOfTreasures("Pierdes 2 niveles", 2, 0, 0)
+      @unusedMonsters << Monster.new("Shoggoth", 16, bc24, p24, -4)
+      
+      p25 = Prize.new(1, 1)
+      bc25 = BadConsequence.newLevelNumberOfTreasures("Pintalabios negro. Pierdes 2 niveles. ", 2, 0, 0)
+      @unusedMonsters << Monster.new("Lolitagooth", 2, bc25, p25, 3)
     
     end
     
