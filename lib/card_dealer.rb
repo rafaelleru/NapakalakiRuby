@@ -193,12 +193,24 @@ module Napakalaki
     
     end
     
+    def initCultistsCardDeck
+      
+      @unusedCultists = Array.new
+      
+      
+      
+    end
+    
     def shuffleTreasures
       @unusedTreasures = @unusedTreasures.shuffle
     end
     
     def shuffleMonsters
       @unusedMonsters = @unusedMonsters.shuffle
+    end
+    
+    def shuffleCultists
+      @unusedCultists = @unusedCultists.shuffle
     end
     
     def nextTreasure
