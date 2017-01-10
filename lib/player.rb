@@ -19,6 +19,16 @@ class Player
   
   def initialize(n)
     @name = n
+    @level = 1
+    @dead = false
+    @hiddenTreasures = Array.new
+    @visibleTreasures = Array.new
+  end
+  
+  def copyConstructor(player)
+    @level = player.level
+    @hiddenTreasures = player.hiddenTreasures
+    @visibleTreasures = player.visibleTreasures
   end
   
   def bringToLife()
