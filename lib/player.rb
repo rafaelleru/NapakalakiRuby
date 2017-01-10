@@ -266,6 +266,23 @@ class Player
     
   end
   
+  def getOponentLevel(monster)
+    return monster.combatLevel
+  end
+  
+  def shouldConvert()
+    dice = Dice.instance
+    n = dice.next_number
+    result = false
+    
+    if n==6 then
+      result = true
+    end
+    
+    return result
+    
+  end
+  
   def to_s()
     retutn @name
   end
