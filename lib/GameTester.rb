@@ -7,7 +7,7 @@
 #última
 
 require 'singleton'
-require_relative 'Napakalaki.rb'
+require_relative 'napakalaki'
 require_relative 'Command'
 require_relative "combat_result.rb"
 
